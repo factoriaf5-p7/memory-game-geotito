@@ -8,8 +8,18 @@ import { CreateUserDTO } from './dto/user.dto';
 export class UserService {
   constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
 
-  async create(createProjectDTO: CreateUserDTO): Promise<User> {
-    const project = new this.userModel(createProjectDTO);
-    return await project.save();
+  async findAll(): Promise<User[]> {
+    const users = await this.userModel.find();
+    return users;
+  }
+
+  async findOne(id: string): Promise<User> {
+    const user = await this.userModel.findById(id);
+    return user;
+  }
+
+  async create(createUserDTO: CreateUserDTO): Promise<User> {
+    const user = new this.userModel(createUserDTO);
+    return await user.save();
   }
 }
