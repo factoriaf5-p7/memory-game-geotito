@@ -1,9 +1,9 @@
 export class MemoryGame {
 
 
-    //    constructor (cards) {
-    //   this.cards = cards;
-    // };
+    constructor (cards) {
+       this.cards = cards;
+     }
 
     // shuffleCard(cardsArr) {
 
