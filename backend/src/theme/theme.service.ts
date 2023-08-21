@@ -10,8 +10,32 @@ export class ThemeService {
     @InjectModel('Theme') private readonly themeModel: Model<Theme>,
   ) {}
 
+  async findAll(): Promise<Theme[]> {
+    const users = await this.themeModel.find();
+    return users;
+  }
+
+  async findOne(id: string): Promise<Theme> {
+    const user = await this.themeModel.findById(id);
+    return user;
+  }
+
   async create(createThemeDTO: CreateThemeDTO): Promise<Theme> {
     const theme = new this.themeModel(createThemeDTO);
     return await theme.save();
+  }
+
+  async delete(id: string): Promise<Theme> {
+    const deletedTheme = await this.themeModel.findByIdAndDelete(id);
+    return deletedTheme;
+  }
+
+  async update(id: string, createThemeDTO: CreateThemeDTO): Promise<Theme> {
+    const updatedTheme = await this.themeModel.findByIdAndUpdate(
+      id,
+      createThemeDTO,
+      { new: true },
+    );
+    return updatedTheme;
   }
 }

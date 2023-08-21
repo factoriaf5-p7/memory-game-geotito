@@ -9,7 +9,7 @@ const users: CreateUserDTO[] = [
     score: 0,
   },
   {
-    name: 'project 2',
+    name: 'user 2',
     score: 0,
   },
 ];
@@ -53,7 +53,7 @@ describe('UserController', () => {
 
   it('should create a user and return the user created', async () => {
     const newUser = {
-      name: 'user2',
+      name: 'user 3',
       score: 0,
     };
     expect(await controller.create(newUser)).toMatchObject({

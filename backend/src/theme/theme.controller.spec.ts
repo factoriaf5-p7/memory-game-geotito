@@ -17,6 +17,7 @@ const themes: CreateThemeDTO[] = [
 describe('ThemeController', () => {
   let controller: ThemeController;
   const mockThemeService = {
+    findAll: jest.fn().mockImplementation(() => Promise.resolve({ themes })),
     create: jest.fn().mockImplementation((theme) => {
       const newThemes = {
         id: 2,
@@ -24,6 +25,19 @@ describe('ThemeController', () => {
       };
       themes.push(newThemes);
       return Promise.resolve(newThemes);
+    }),
+    findOne: jest.fn().mockImplementation((name) => {
+      const foundTheme = themes.find((theme) => theme.name === name);
+      return Promise.resolve(foundTheme);
+    }),
+    update: jest.fn().mockImplementation((name, updatedData) => {
+      const foundIndex: any = themes.find((theme) => theme.name === name);
+      const updatedTheme = {
+        ...themes[foundIndex],
+        ...updatedData,
+      };
+      themes[foundIndex] = updatedTheme;
+      return Promise.resolve(updatedTheme);
     }),
   };
 
@@ -43,6 +57,10 @@ describe('ThemeController', () => {
     expect(controller).toBeDefined();
   });
 
+  it('should return a themes list', async () => {
+    expect(await controller.findAll()).toMatchObject({ themes });
+  });
+
   it('should create a theme and return the theme created', async () => {
     const newTheme = {
       name: 'salsa bands',
@@ -51,5 +69,22 @@ describe('ThemeController', () => {
     expect(await controller.create(newTheme)).toMatchObject({
       id: expect.any(Number),
     });
+  });
+
+  it('should return an specific theme', async () => {
+    expect(await controller.findOne('rock bands')).toMatchObject({
+      name: 'rock bands',
+      cards: ['rock band 1', 'rock band 2', 'rock band 3'],
+    });
+  });
+
+  it('should update a theme and return the theme updated', async () => {
+    const updatedTheme = {
+      name: 'indie bands UPDATED',
+      cards: ['indie band 1', 'indie band 2', 'indie band 3'],
+    };
+    expect(await controller.update('indie bands', updatedTheme)).toMatchObject(
+      updatedTheme,
+    );
   });
 });
