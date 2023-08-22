@@ -1,5 +1,6 @@
 import { Card } from "./Card";
 import cards from "../data/data.json"
+import { image } from "@uiw/react-md-editor";
 
 interface Cards {
   name: string;
@@ -24,7 +25,12 @@ export const Game = () => {
       </div>
       <div id="memory_board">
         {cardsRandom.map((card, i) => (  
-          <div className="card">{card.name}<img src={`${imgRoute}${card.img}`} /></div>
+
+          <div className="card" style={{ 
+            backgroundImage: `url(${imgRoute + card.img})` 
+          }}>
+              <p>{card.name}</p>
+        </div>
         ))}
       </div>
       <div id="score">
