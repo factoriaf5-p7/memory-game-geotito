@@ -34,7 +34,7 @@ export const Game = () => {
       </div>
       <div id="memory_board">
         {cards.map((card, i) => (
-          <div className="card">{card.name}</div>
+          <div className="card">{i}{card.name}</div>
         ))}
       </div>
       <div id="score">
