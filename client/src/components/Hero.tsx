@@ -1,7 +1,7 @@
-import React from 'react'
+import '../assets/styles/index.css'
 
 export const Hero = () => {
   return (
-    <div>Hero</div>
+    <div className='card'>Hero image</div>
   )
 }
