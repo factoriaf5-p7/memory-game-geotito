@@ -15,11 +15,15 @@ export const Game = () => {
       <div>
         <h1>Superhero Memory Game</h1>
       </div>
-      <div id="memory_board" role="cards">
+      <div id="memory_board">
         {cardsRandom.map((card, i) => (
-          <div className="card">
-            {card.name}
-            <img src={`${imgRoute}${card.img}`} />
+          <div
+            className="card"
+            style={{
+              backgroundImage: `url(${imgRoute + card.img})`,
+            }}
+          >
+            <p>{card.name}</p>
           </div>
         ))}
       </div>
