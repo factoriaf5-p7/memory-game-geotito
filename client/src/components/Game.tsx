@@ -15,7 +15,7 @@ export const Game = () => {
       <div>
         <h1>Superhero Memory Game</h1>
       </div>
-      <div id="memory_board">
+      <div id="memory_board" role="cards">
         {cardsRandom.map((card, i) => (
           <div
             className="card"
