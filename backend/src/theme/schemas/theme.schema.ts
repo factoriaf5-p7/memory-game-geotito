@@ -1,10 +1,11 @@
 import { Schema } from 'mongoose';
 
 export const ThemeSchema = new Schema({
-  name: { type: String, unique: true, required: true },
+  name: { type: String, required: true },
   cards: [
     {
-      type: String,
+      cardname: { type: String, required: true },
+      cardimg: { type: String, required: true },
     },
   ],
 });
