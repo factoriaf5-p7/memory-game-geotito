@@ -35,12 +35,14 @@ export const Settings = () => {
           />
         <label htmlFor="abc">ABC</label>
         </div>
+        <hr />
         <div>Difficulty ---
         <input 
           type="radio" 
           name="difficulty" 
           value="easy" 
           id="easy" 
+          className="radioButton"
           checked={difficulty === "easy"}
           onChange={onOptionChange}
           />
@@ -50,6 +52,7 @@ export const Settings = () => {
           name="difficulty" 
           value="medium" 
           id="medium" 
+          className="radioButton"
           checked={difficulty === "medium"}
           onChange={onOptionChange}
           />
@@ -59,10 +62,13 @@ export const Settings = () => {
             name="difficulty" 
             value="hard" 
             id="hard"
+            className="radioButton"
             checked={difficulty === "hard"} 
             onChange={onOptionChange}/>
         <label htmlFor="hard">Hard</label>
         </div>
+        <hr />
+        <button className="btn btn-primary" type="submit">Save & play</button>
       </div>
 
     </>
