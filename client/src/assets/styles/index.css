@@ -30,6 +30,11 @@ html {
     padding:20px;
     font-size:64px;
   }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   
   
   .card .front.blocked,

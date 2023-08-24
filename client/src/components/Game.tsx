@@ -1,30 +1,34 @@
-import { random } from "@/utils/random";
-import cards from "../data/data.json";
+import { Card } from "./Card";
+import cards from "../data/data.json"
+import { Nav } from "./Nav";
 
-export interface Cards {
+interface Cards {
   name: string;
   img: string;
+
 }
 export const Game = () => {
-  const imgRoute = "src/assets/img/";
+  const imgRoute ="src/assets/img/"
 
-  const cardsRandom = random(cards);
-
+  const shuffle = (array: Cards[]) => { 
+    return array.map((a) => ({ sort: Math.random(), value: a }))
+        .sort((a, b) => a.sort - b.sort)
+        .map((a) => a.value); 
+  }; 
+  const cardsRandom  = shuffle(cards)
+  // console.log(cards);
+  // console.log(cardsRandom);
   return (
     <>
+    <Nav />
       <div>
         <h1>Superhero Memory Game</h1>
       </div>
-      <div id="memory_board" role="cards">
-        {cardsRandom.map((card, i) => (
-          <div
-            className="card"
-            style={{
-              backgroundImage: `url(${imgRoute + card.img})`,
-            }}
-          >
-            <p>{card.name}</p>
-          </div>
+      <div id="memory_board">
+        {cardsRandom.map((card, i) => (  
+          <div className="card" style={{ 
+              backgroundImage: `url("https://via.placeholder.com/500")` 
+    }}><img src={`${imgRoute}${card.img}`} alt={card.name}/></div>
         ))}
       </div>
       <div id="score">

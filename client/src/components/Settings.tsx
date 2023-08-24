@@ -1,19 +1,26 @@
 import {useState} from 'react'
+import { Nav } from './Nav'
 
 export const Settings = () => {
 
-  const [difficulty, setDifficulty] = useState("medium")
+  console.log(localStorage.getItem("level"))
+
+  const [difficulty, setDifficulty] = useState(localStorage.getItem("level"))
+
   const [theme, setTheme] = useState("heroes")
 
   const onOptionChange = e => {
     setDifficulty(e.target.value)
   }
+  const onSaveSettings = () => {
+    localStorage.setItem("level" , difficulty)
+    alert("Settings saved")
+    window.location.href ="/game"
+  }
 
   return (
     <>
-      <div>
-        <h1>Superhero Memory Game</h1>
-      </div>
+    <Nav />
       <div  id="memory_board">
         <h1>Settings</h1>
         <div>Themes ---
@@ -68,7 +75,7 @@ export const Settings = () => {
         <label htmlFor="hard">Hard</label>
         </div>
         <hr />
-        <button className="btn btn-primary" type="submit">Save & play</button>
+        <button className="btn btn-primary" type="submit" onClick={onSaveSettings}>Save & play</button>
       </div>
 
     </>
