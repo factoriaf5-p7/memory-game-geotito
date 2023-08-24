@@ -20,19 +20,22 @@ html {
     top: 50%;
     transform: translate(-50%, -50%);
   }
-  .card  {
+  
+  .card .back, .card .front  {
     background-color: #456783;
-      width:71px;
-      height:71px;
-      float:left;
-      margin:10px;
-      padding:20px;
-      font-size:24px; 
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
+    width:71px;
+    height:71px;
+    float:left;
+    margin:10px;
+    padding:20px;
+    font-size:64px;
   }
-
+  
+  
+  .card .front.blocked,
+  .card .back.blocked {
+    pointer-events: none;
+  }
   
   .hidden {
     display:none;
