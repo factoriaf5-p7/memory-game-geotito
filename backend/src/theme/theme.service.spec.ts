@@ -5,11 +5,19 @@ import { CreateThemeDTO } from './dto/theme.dto';
 const themes: CreateThemeDTO[] = [
   {
     name: 'rock bands',
-    cards: ['rock band 1', 'rock band 2', 'rock band 3'],
+    cards: [
+      { name: 'rock band 1', img: 'url' },
+      { name: 'rock band 2', img: 'url' },
+      { name: 'rock band 3', img: 'url' },
+    ],
   },
   {
     name: 'indie bands',
-    cards: ['indie band 1', 'indie band 2', 'indie band 3'],
+    cards: [
+      { name: 'indie band 1', img: 'url' },
+      { name: 'indie band 2', img: 'url' },
+      { name: 'indie band 3', img: 'url' },
+    ],
   },
 ];
 
@@ -62,7 +70,11 @@ describe('ThemeService', () => {
   it('should create a theme and return the theme created', async () => {
     const newTheme = {
       name: 'salsa bands',
-      cards: ['salsa band 1', 'salsa band 2', 'salsa band 3'],
+      cards: [
+        { name: 'salsa band 1', img: 'url' },
+        { name: 'salsa band 2', img: 'url' },
+        { name: 'salsa band 3', img: 'url' },
+      ],
     };
     expect(await service.create(newTheme)).toMatchObject({
       id: expect.any(Number),
@@ -72,14 +84,22 @@ describe('ThemeService', () => {
   it('should return an specific theme', async () => {
     expect(await service.findOne('rock bands')).toMatchObject({
       name: 'rock bands',
-      cards: ['rock band 1', 'rock band 2', 'rock band 3'],
+      cards: [
+        { name: 'rock band 1', img: 'url' },
+        { name: 'rock band 2', img: 'url' },
+        { name: 'rock band 3', img: 'url' },
+      ],
     });
   });
 
   it('should update a theme and return the theme updated', async () => {
     const updatedTheme = {
       name: 'indie bands UPDATED',
-      cards: ['indie band 1', 'indie band 2', 'indie band 3'],
+      cards: [
+        { name: 'indie band 1', img: 'url' },
+        { name: 'indie band 2', img: 'url' },
+        { name: 'indie band 3', img: 'url' },
+      ],
     };
     expect(await service.update('indie bands', updatedTheme)).toMatchObject(
       updatedTheme,
