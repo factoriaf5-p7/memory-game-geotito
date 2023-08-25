@@ -1,6 +1,7 @@
 import { random } from "@/utils/random";
 import data from "../data/data.json";
 import { useEffect, useState } from "react";
+import { Nav } from "./Nav";
 
 interface Cards {
   name: string;
@@ -80,9 +81,7 @@ export const Game = () => {
   // console.log(cardsRandom);
   return (
     <>
-      <div className="container">
-        <h1>Memory Game</h1>
-      </div>
+<Nav />
       <div id="memory_board" role="cards">
         {cards.map((card) => (
           <div
