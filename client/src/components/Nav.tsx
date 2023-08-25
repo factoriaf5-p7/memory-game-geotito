@@ -10,7 +10,7 @@ export const Nav = () => {
             <Link  to='/game'><button>Game</button></Link>
             <Link  to='/settings'><button>Settings</button></Link>
         </nav>
-      <p> Nivel de dificultad: {localStorage.getItem("level")}</p>
+      <p> Nivel de dificultad: {localStorage.getItem("level") != null ? localStorage.getItem("level") : "medium"}</p>
   </>
   )
 }

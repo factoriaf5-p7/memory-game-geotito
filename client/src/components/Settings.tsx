@@ -5,7 +5,7 @@ export const Settings = () => {
 
   console.log(localStorage.getItem("level"))
 
-  const [difficulty, setDifficulty] = useState(localStorage.getItem("level"))
+  const [difficulty, setDifficulty] = useState( localStorage.getItem("level") != null ? localStorage.getItem("level") : "medium" )
 
   const [theme, setTheme] = useState("heroes")
 
@@ -14,7 +14,7 @@ export const Settings = () => {
   }
   const onSaveSettings = () => {
     localStorage.setItem("level" , difficulty)
-    alert("Settings saved")
+    //alert("Settings saved")
     window.location.href ="/game"
   }
 

@@ -20,7 +20,15 @@ html {
     top: 50%;
     transform: translate(-50%, -50%);
   }
-  
+  .card {
+    background-color: #456783;
+    width:71px;
+    height:71px;
+    float:left;
+    margin:10px;
+    padding:20px;
+    font-size:64px;
+  }
   .card .back, .card .front  {
     background-color: #456783;
     width:71px;
