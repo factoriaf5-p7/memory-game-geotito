@@ -86,7 +86,11 @@ describe('ThemeController', () => {
   it('should return an specific theme', async () => {
     expect(await controller.findOne('rock bands')).toMatchObject({
       name: 'rock bands',
-      cards: ['rock band 1', 'rock band 2', 'rock band 3'],
+      cards: [
+        { name: 'rock band 1', img: 'url' },
+        { name: 'rock band 2', img: 'url' },
+        { name: 'rock band 3', img: 'url' },
+      ],
     });
   });
 
