@@ -1,6 +1,6 @@
-import { Cards } from "@/components/Game";
+import { Cards, CardsUpdated } from "@/components/Game";
 
-export const random = (array: Cards[]) => {
+export const random = (array: CardsUpdated[]) => {
   return array
     .map((a) => ({ sort: Math.random(), value: a }))
     .sort((a, b) => a.sort - b.sort)
